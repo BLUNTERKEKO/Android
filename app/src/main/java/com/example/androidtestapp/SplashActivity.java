@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         listofQ=new ArrayList<>();
         listofQ.add(new ModelClass("¿Cuál de los siguientes valores ajusta el ancho al contenido del objeto?", "match_parent", "fill_parent", "wrap_content", "wrap_parent", "wrap_content"));
         listofQ.add(new ModelClass("¿Qué método evita que se pierda el trabajo que se tiene en curso?", "onSaveInstanceState()", "setContentView(", "setSaveInstanceState()", "setSaveStateInstance()", "onSaveInstanceState()"));
-        listofQ.add(new ModelClass("¿Cuál es la superclase de la que suelen extender las actividades desde API 15?", "AppCompatActivity", "Activity", "ActionBarActivity", "Cualquiera de las anteriore", "AppCompatActivity"));
+/*        listofQ.add(new ModelClass("¿Cuál es la superclase de la que suelen extender las actividades desde API 15?", "AppCompatActivity", "Activity", "ActionBarActivity", "Cualquiera de las anteriore", "AppCompatActivity"));
         listofQ.add(new ModelClass("¿Cuál es la forma correcta de usar el comando setTextColor?", "miTexto.setTextColor(0xffff0000)", "miTexto.setTextColor(Color.parseColor(#ff0000))", "miTexto.setTextColor(Color.argb(255, 255, 0, 0))", "Todas las respuestas anteriores son correctas", "Todas las respuestas anteriores son correctas"));
         listofQ.add(new ModelClass(" ¿Cuál de estos puede ser el escuchador de un botón?", "setOnClickListener", "setOnListenerClick", "setClickOnListener", "setListenerOnClick", "setOnClickListener"));
         listofQ.add(new ModelClass("¿A cuál de los siguientes se asemeja el tipo de posicionamiento de ConstraintLayout?", "AbsoluteLayout", "LinearLayout", "FrameLayout", "RelativeLayout", "RelativeLayout"));
@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
         listofQ.add(new ModelClass("¿Cuándo es aconsejable modificar la clase R?", "Nunca", "Al añadir un recurso", "Antes de empaquetar la aplicación", "Cuando el sistema lo solicite", "Nunca"));
         listofQ.add(new ModelClass("Con respecto a Android Studio, es falso que...", "Fue presentado en 2015", "Reemplazó a Eclipse como IDE oficial", "Se basa en IntelliJ IDEA de JetBrains", "Es de licencia gratuita", "Fue presentado en 2015"));
         listofQ.add(new ModelClass("¿Cómo se denominan los Intent que nombra el componente que se pretende ejecutar?", "Intent explícitos", "Intent implícitos", "PendingIntent", "IntentforResult", "Intent explícitos"));
-
+*/
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

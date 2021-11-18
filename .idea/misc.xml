@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/34633/Android/app/src/main/res/drawable/p_bar.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/34633/Android/app/src/main/res/drawable/progress_bar_custom.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/34633/Android/app/src/main/res/layout/activity_dashboard.xml" value="0.176" />
+        <entry key="..\:/Users/34633/Android/app/src/main/res/layout/activity_main.xml" value="0.24230072463768115" />
+        <entry key="..\:/Users/34633/Android/app/src/main/res/layout/activity_won.xml" value="0.1" />
         <entry key="..\:/Users/dasem/AndroidStudioProjects/AndroidTestApp/app/src/main/res/drawable/exit_quiz.xml" value="0.1037037037037037" />
         <entry key="..\:/Users/dasem/AndroidStudioProjects/AndroidTestApp/app/src/main/res/drawable/next_btn_shape.xml" value="0.1" />
         <entry key="..\:/Users/dasem/AndroidStudioProjects/AndroidTestApp/app/src/main/res/layout/activity_dashboard.xml" value="0.33" />

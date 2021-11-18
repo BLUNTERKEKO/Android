@@ -20,34 +20,30 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:background="@drawable/back" />
-        <TextView
-            android:id="@+id/exit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:text="Exit"
-            android:textSize="@dimen/_18sdp" />
+
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/rl2"
-        android:layout_below="@id/toolbar"
         android:layout_width="@dimen/_170sdp"
         android:layout_height="@dimen/_170sdp"
+        android:layout_below="@id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_10sdp">
+
         <ProgressBar
-            android:id="@+id/CircularProgressBar"
+            android:id="@+id/progress_bar_2"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cpb_background_progressbar_color="@color/red"
-            app:cpb_background_progressbar_width="@dimen/_10sdp"
-            app:cpb_progress_direction="to_right"
-            app:cpb_progress_max="20"
-            app:cpb_progressbar_color="@color/green"
-            app:cpb_progressbar_width="@dimen/_10sdp"
-            app:cpb_round_border="false" />
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:max="40"
+            android:maxHeight="20dp"
+            android:minHeight="20dp"
+            android:progress="20"
+            android:progressBackgroundTint="@color/red"
+            android:progressTint="@color/green" />
+
         <TextView
             android:id="@+id/resultText"
             android:layout_width="wrap_content"
@@ -56,4 +52,19 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_22sdp" />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="339dp"
+        android:text="Empezar de nuevo"
+        android:textSize="@dimen/_20sdp" />
 </RelativeLayout>

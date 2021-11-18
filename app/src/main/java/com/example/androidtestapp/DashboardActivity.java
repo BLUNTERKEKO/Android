@@ -5,12 +5,13 @@ import static com.example.androidtestapp.SplashActivity.listofQ;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Collections;
@@ -26,19 +27,20 @@ public class DashboardActivity extends AppCompatActivity {
     int correctCount=0;
     int wrongCount=0;
     LinearLayout nextBtn;
+    ProgressBar progBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-        Hooks();
-        setAllData();
-
         allQuestionsList=listofQ;
         Collections.shuffle(allQuestionsList);
         modelClass=listofQ.get(index);
-
+        Hooks();
+        setAllData();
+        progBar=findViewById(R.id.progress_bar_1);
+        progBar.setMax(listofQ.size());
+        progBar.setProgress(index);
         nextBtn.setClickable(false);
     }
     private void setAllData() {
@@ -63,43 +65,37 @@ public class DashboardActivity extends AppCompatActivity {
 
         nextBtn=findViewById(R.id.nextBtn);
     }
-    public void Correct(CardView cardView) {
-        cardView.setBackgroundColor(getResources().getColor(R.color.green));
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                correctCount++;
-                index++;
-                modelClass = listofQ.get(index);
-                setAllData();
-                resetColor();
-            }
-        });
+    public void correct(String cardV) {
+        Log.d("correct", "Setting green");
+        if(cardV.equals("A")){
+            cardOA.setBackgroundColor(Color.GREEN);
+        }else if(cardV.equals("B")){
+            cardOB.setBackgroundColor(Color.GREEN);
+        }else if(cardV.equals("C")){
+            cardOC.setBackgroundColor(Color.GREEN);
+        }else if(cardV.equals("D")){
+            cardOD.setBackgroundColor(Color.GREEN);
+        }
+        correctCount++;
     }
-    public void Wrong(CardView cardOA) {
-        cardOA.setCardBackgroundColor(getResources().getColor(R.color.red));
-
-        nextBtn.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                wrongCount++;
-
-                if(index<listofQ.size()-1){
-                    index++;
-                    modelClass =listofQ.get(index);
-                    setAllData();
-                }else{
-                    GameWon();
-                }
-            }
-        }));
+    public void wrong(String cardV) {
+        Log.d("wrong", "Setting red");
+        if(cardV.equals("A")){
+            cardOA.setBackgroundColor(Color.RED);
+        }else if(cardV.equals("B")){
+            cardOB.setBackgroundColor(Color.RED);
+        }else if(cardV.equals("C")){
+            cardOC.setBackgroundColor(Color.RED);
+        }else if(cardV.equals("D")){
+            cardOD.setBackgroundColor(Color.RED);
+        }
+        wrongCount++;
     }
-    private void GameWon() {
+    private void gameWon() {
         Intent intent= new Intent(DashboardActivity.this, WonActivity.class);
-        intent.putExtra("Correct", correctCount);
-        intent.putExtra("Wrong", wrongCount);
+        intent.putExtra("correct", correctCount);
+        intent.putExtra("wrong", wrongCount);
         startActivity(intent);
     }
     public void enableButton(){
@@ -115,73 +111,85 @@ public class DashboardActivity extends AppCompatActivity {
         cardOD.setClickable(false);
     }
     public void resetColor(){
-        cardOA.setBackgroundColor(getResources().getColor(R.color.white));
-        cardOB.setBackgroundColor(getResources().getColor(R.color.white));
-        cardOC.setBackgroundColor(getResources().getColor(R.color.white));
-        cardOD.setBackgroundColor(getResources().getColor(R.color.white));
+        Log.d("resetColor", "Cleaning cards");
+        cardOA.setBackgroundColor(Color.WHITE);
+        cardOB.setBackgroundColor(Color.WHITE);
+        cardOC.setBackgroundColor(Color.WHITE);
+        cardOD.setBackgroundColor(Color.WHITE);
+        Log.d("resetColor", "END of cleaning cards");
     }
     public void optionAClick(View view) {
+        Log.d("optionA", "Clicking A");
         disableButton();
         nextBtn.setClickable(true);
         if(modelClass.getoA().equals(modelClass.getAns())){
-            cardOA.setCardBackgroundColor(getResources().getColor(R.color.green));
-
-            if(index<listofQ.size()-1) {
-                Correct(cardOA);
-
+            if(index<listofQ.size()) {
+                Log.d("optionA", "Correct A");
+                correct("A");
             }else {
-                GameWon();
+                gameWon();
             }
         }else {
-            Wrong(cardOA);
+            Log.d("optionA", "Wrong A");
+            wrong("A");
         }
     }
     public void optionBClick(View view) {
+        Log.d("optionB", "Clicking B");
         disableButton();
         nextBtn.setClickable(true);
         if(modelClass.getoB().equals(modelClass.getAns())){
-            cardOB.setCardBackgroundColor(getResources().getColor(R.color.green));
-
-            if(index<listofQ.size()-1) {
-                Correct(cardOB);
-
+            if(index<listofQ.size()) {
+                Log.d("optionB", "Correct B");
+                correct("B");
             }else {
-                GameWon();
+                gameWon();
             }
         }else {
-            Wrong(cardOB);
+            Log.d("optionB", "Wrong B");
+            wrong("B");
         }
     }
     public void optionCClick(View view) {
         disableButton();
         nextBtn.setClickable(true);
         if(modelClass.getoC().equals(modelClass.getAns())){
-            cardOC.setCardBackgroundColor(getResources().getColor(R.color.green));
-
-            if(index<listofQ.size()-1) {
-                Correct(cardOC);
-
+            if(index<listofQ.size()) {
+                correct("C");
             }else {
-                GameWon();
+                gameWon();
             }
         }else {
-            Wrong(cardOC);
+            wrong("C");
         }
     }
     public void optionDClick(View view) {
         disableButton();
         nextBtn.setClickable(true);
         if(modelClass.getoD().equals(modelClass.getAns())){
-            cardOD.setCardBackgroundColor(getResources().getColor(R.color.green));
-
-            if(index<listofQ.size()-1) {
-                Correct(cardOD);
-
+            if(index<listofQ.size()) {
+                correct("D");
             }else {
-                GameWon();
+                gameWon();
             }
         }else {
-            Wrong(cardOD);
+            wrong("D");
         }
+    }
+    public void nextOnClick(View view) {
+        Log.d("nextButton", "Clicking next");
+        index++;
+        if(index < listofQ.size()){
+            Log.d("nextButton", "Going next");
+            modelClass = listofQ.get(index);
+            setAllData();
+            resetColor();
+        }else{
+            Log.d("nextButton", "Game won");
+            gameWon();
+        }
+        enableButton();
+        progBar.setProgress(index);
+        nextBtn.setClickable(false);
     }
 }
